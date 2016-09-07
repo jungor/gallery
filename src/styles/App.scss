@@ -1,0 +1,118 @@
+/* Base Application Styles */
+
+$img-figure-width: 320px;
+$img-figure-height: 360px;
+$img-figure-padding: 40px;
+
+$transition-duration: .5s;
+
+@mixin blurImg($size) {
+  img {
+    filter: blur($size);
+  }
+}
+
+html, body {
+  color: #fff;
+  background: #222;
+  width: 100%;
+  height: 100%;
+}
+
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 780px;
+  overflow: hidden;
+  // height: 100%;
+}
+
+.img-sec {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #ddd;
+  @at-root {
+    .img-figure {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: $img-figure-width;
+      height: $img-figure-height;
+      padding: $img-figure-padding;
+      margin: 0;
+      box-sizing: border-box;
+      background-color: #fff;
+      transition: left, top, transform, filter;
+      transition-duration: $transition-duration;
+      cursor: pointer;
+      transform-origin: 0 50% 0;
+      transform-style: preserve-3d;
+      @include blurImg(3px);
+      &.center {
+        @include blurImg(0);
+        background-color: #fafafa;
+        z-index: 999;
+        &.reverse {
+          transform: translate($img-figure-width) rotateY(180deg);
+        }
+      }
+      figcaption {
+        text-align: center;
+        color: #a7a0a2;
+        .img-title {
+          margin: 20px 0 0 0;
+        }
+        .img-back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          padding: 50px 40px;
+          box-sizing: border-box;
+          line-height: 1.25;
+          font-size: 22px;
+          transform: rotateY(180deg) translateZ(1px);
+          background-color: #fff;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+.controller-nav {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  bottom: 70px;
+  text-align: center;
+  @at-root {
+    .controller-unit {
+      display: inline-block;
+      margin: 0 10px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #aaa;
+      cursor: pointer;
+      vertical-align: middle;
+      &.center {
+        transform: scale(2);
+        font-size: 10px;
+        line-height: 15px;
+        // ::after {
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   width: 100%;
+        //   height: 100%;
+        //   content: 'sad';
+        // }
+      }
+    }
+  }
+}
