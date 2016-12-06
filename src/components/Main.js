@@ -118,7 +118,7 @@ class ControllerUnit extends React.Component {
       this.props.is_reverse ? ' reverse' : '',
       this.props.is_center ? 'center' : ''
     ];
-    let char = this.props.key;
+    let char = '';
     if (this.props.is_center) {
       if (this.props.is_reverse) {
         char = '←';
